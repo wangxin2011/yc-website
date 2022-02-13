@@ -1,11 +1,9 @@
 <template>
-  <div class="footer">
-    <!-- <div class="links">
-      <a href="https://ant.design/">帮助中心</a>
-      <a href="https://vue.ant.design/">联系我们</a>
-    </div> -->
-    <div class="copyright m-b-10" v-html="copyright"></div>
-    <div class="copyright" v-html="support"></div>
+  <div v-if="support || orgname || copyright" class="footer">
+    <div v-if="support" class="copyright" v-html="support"></div>
+    <div v-if="orgname" class="copyright" v-html="orgname"></div>
+    <div v-if="copyright" class="copyright" v-html="copyright"></div>
+    
   </div>
 </template>
 
@@ -16,11 +14,14 @@ export default {
     return {}
   },
   computed:{
+    orgname(){
+      return ((window.serverConfig && window.serverConfig.VUE_APP_ORGANIZER) ? window.serverConfig.VUE_APP_ORGANIZER : '')
+    },
     copyright(){
-      return ((window.serverConfig && window.serverConfig.VUE_APP_ORGANIZER) ? window.serverConfig.VUE_APP_ORGANIZER : process.env.VUE_APP_ORGANIZER)
+      return ((window.serverConfig && window.serverConfig.VUE_APP_COPYRIGHT) ? window.serverConfig.VUE_APP_COPYRIGHT : '')
     },
     support(){
-      return ((window.serverConfig && window.serverConfig.VUE_APP_SURPPORT) ? window.serverConfig.VUE_APP_SURPPORT : process.env.VUE_APP_SURPPORT)
+      return ((window.serverConfig && window.serverConfig.VUE_APP_SURPPORT) ? window.serverConfig.VUE_APP_SURPPORT : '')
     }
   }
 }
@@ -28,11 +29,14 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
+  height: 60px;
   padding: 16px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background: #efefef;
   .links {
-    margin-bottom: 8px;
-
     a {
       color: rgba(0, 0, 0, 0.45);
 
@@ -48,6 +52,10 @@ export default {
   .copyright {
     color: rgba(0, 0, 0, 0.45);
     font-size: 14px;
+    margin-right: 20px;
+    &:last-child{
+      margin-right: 0;
+    }
   }
   .m-b-10{
     margin-bottom: 10px;

@@ -10,9 +10,11 @@ window.serverConfig = {
     VUE_APP_SSO_URL : 'http://tsso.dledc.com',
     VUE_APP_WEBSIT_TITLE: '采购申报系统',
     // 主办单位
-    VUE_APP_ORGANIZER: 'Copyright@2021 南昌市现教中心',
+    VUE_APP_ORGANIZER: '主办单位：宜春市教体局',
     // 技术支持
     VUE_APP_SURPPORT: '技术支持：江西新华云教育科技有限公司',
+    // 备案号
+    VUE_APP_COPYRIGHT: '<a href="https://beian.miit.gov.cn/" target="_blank"> 赣ICP备15019010号-1</a>',
     // 版本号
     VUE_APP_VERSION: '1.0.0'  
   }
